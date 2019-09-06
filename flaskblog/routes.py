@@ -32,7 +32,7 @@ def register():
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', title=register, form=form)
+    return render_template('register.html', title='Register', form=form)
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -107,7 +107,7 @@ def new_post():
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title='post.title', post=post)
+    return render_template('post.html', title=post.title, post=post)
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET','POST'])
